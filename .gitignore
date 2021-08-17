@@ -1,3 +1,6 @@
 drip_demo.egg-info
 .venv
 __pycache__
+
+agent.db
+business.db

@@ -5,6 +5,9 @@ class BusinessEntity(BaseModel):
     url: str
     api_base: str
 
+    class Config:
+        orm_model = True
+
 def FacebookEntity():
     return BusinessEntity(
         name="Facebook",
