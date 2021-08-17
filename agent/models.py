@@ -15,8 +15,18 @@ class DataSubject(Base):
     validated_identity = Column(Boolean)
 
 
+class Business(Base):
+    __tablename__ = "businesses"
+
+    id = Column(Integer, primary_key=True, index=True)
+    actions = relationship("Action", viewonly=True)
+    name = Column(String)
+    url = Column(String)
+    api_base = Column(String)
+
+
 class Action(Base):
-    __tablename__ = "authorized_action"
+    __tablename__ = "authorized_actions"
 
     id = Column(Integer, primary_key=True, index=True)
     subject_id = Column(Integer, ForeignKey('data_subjects.id'))
@@ -27,12 +37,5 @@ class Action(Base):
     authority = Column(String)
     external_id = Column(String)
 
-
-class Business(Base):
-    __tablename__ = "businesses"
-
-    id = Column(Integer, primary_key=True, index=True)
-    actions = relationship(Action)
-    name = Column(String)
-    url = Column(String)
-    api_base = Column(String)
+    business = relationship(Business)
+    subject = relationship(DataSubject)
