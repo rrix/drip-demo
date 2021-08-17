@@ -15,6 +15,7 @@ def push_forward(action: entities.Action):
         pass
         # nothing to do: push_closed(action)
 
+
 async def push_pending(action: entities.Action):
     base = action.business.api_base
     request_url = "{base}/excercise/".format(
@@ -29,3 +30,8 @@ async def push_pending(action: entities.Action):
 
             html = await response.text()
             print("Body:", html[:15], "...")
+
+
+def push_all(actions: [entities.Action]):
+    return [ action.push_forward(action) for action in actions ]
+    

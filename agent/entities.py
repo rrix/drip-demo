@@ -3,6 +3,7 @@ from typing import Optional
 
 import common.enums
 
+
 class DataSubject(BaseModel):
     name: str
     email: str
