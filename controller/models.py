@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from sqlalchemy.types import Date
 
@@ -37,6 +37,11 @@ class DataSubjectRequest(Base):
     atype = Column(String)
     authority = Column(String)
     external_id = Column(String)
+
+    expires_at = Column(Date)
+    created_at = Column(Date)
+    dispensation = Column(String)
+    response_url = Column(String)
 
     business = relationship(Business)
     subject = relationship(DataSubject)

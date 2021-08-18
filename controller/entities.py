@@ -14,7 +14,7 @@ class DataSubjectResponse(BaseModel):
 
 class DataSubjectStatus(BaseModel):
     request_id: str
-    atype: common.enums.ActionType
+    request_type: common.enums.ActionType
     status: common.enums.ActionState
-    response: DataSubjectResponse
+    response: Optional[DataSubjectResponse]
     

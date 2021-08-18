@@ -46,7 +46,9 @@ async def new_exercise(req: centities.DataSubjectRequest,
                        db: Session = Depends(get_db)):
     return crud.persist_exercise(db, req)
 
-@app.get("/{controller}/status")
-async def exercise_status(req: entities.DataSubjectStatus,
+@app.get("/{controller}/status",
+         response_model_exclude_unset=True,
+         response_model=entities.DataSubjectStatus)
+async def exercise_status(request_id: str,
                           db: Session = Depends(get_db)):
-    return # await crud.create_action(db, subject_id, business_name, authority, action_type)
+    return crud.exercise_status(db, request_id)

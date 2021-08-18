@@ -10,8 +10,8 @@ class ActionState(str, Enum):
     closed  = "closed"
     opened  = "open"
 
-    def is_open():
+    def is_open(self):
         return (self in ["pending", "open"])
 
-    def is_closed():
+    def is_closed(self):
         return not self.is_open()
